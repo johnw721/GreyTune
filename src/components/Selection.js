@@ -10,6 +10,33 @@ export default class Selection extends Component {
    console.log(this.state)
    this.setState({input: e.target.value})
  }
+ HandleScale=(e)=>{
+  var Root = e.target.value
+  var halfStep = this.props.halfStep(Root);
+  var wholeStep = this.props.wholeStep(Root);
+   return(
+     <div>
+      (//This is an example: This is the formula for the Major Scale: W-W-H-W-W-W-H)
+       Root, {wholeStep()}, {wholeStep(wholeStep)}, {halfStep(wholeStep)},
+       {wholeStep(halfStep)},{wholeStep(wholeStep)},{wholeStep(wholeStep)},{halfStep(wholeStep)}
+     </div>
+   )
+ }
+ HandleChord=()=>{
+  return(
+    <div>
+
+    </div>
+  )
+ }
+ HandleProgression=()=>{
+  return(
+    <div>
+
+    </div>
+  )
+ }
+
  handleResult=(e)=>{
  //  'A','A#','B','C','C#','D','D#','E','F','F#','G','G#'
   /*this.props.note.map( n => {
@@ -25,6 +52,9 @@ export default class Selection extends Component {
   console.log(this.props);
   console.log(e.target.value)
  }
+ onChangeValue=(event)=>{
+   console.log(event.target.value);
+  }
   render() {
     return (
       <div className="Container">
@@ -33,32 +63,32 @@ export default class Selection extends Component {
             <div className='mT'>
               Music Theory
             </div>
-            <div className='Notes'>
-              <input type="radio" id="noteA"  value="A"/>
+            <div className='Notes' onChange={this.onChangeValue.note}>
+              <input type="radio" id="noteA" name="tone"  value="A"/>
               <label for="noteA">A</label>
-              <input type="radio" id="noteB"  value="B"/>
+              <input type="radio" id="noteB" name="tone"  value="B"/>
               <label for="noteB">B</label>
-              <input type="radio" id="noteC"  value="C"/>
+              <input type="radio" id="noteC" name="tone"  value="C"/>
               <label for="noteC">C</label>
-              <input type="radio" id="noteD"  value="D"/>
+              <input type="radio" id="noteD" name="tone"  value="D"/>
               <label for="noteD">D</label>
-              <input type="radio" id="noteE"  value="E"/>
+              <input type="radio" id="noteE" name="tone"  value="E"/>
               <label for="noteE">E</label>
-              <input type="radio" id="noteF"  value="F"/>
+              <input type="radio" id="noteF" name="tone"  value="F"/>
               <label for="noteF">F</label>
-              <input type="radio" id="noteG"  value="G"/>
+              <input type="radio" id="noteG" name="tone"  value="G"/>
               <label for="noteG">G</label>
-              <select>
-                <option>#</option>
-                <option></option>
-                <option>b</option>
+              <select onChange={this.onChangeValue}>
+                <option value="#">#</option>
+                <option value=""></option>
+                <option value="b">b</option>
               </select>
             </div>
-            <div className='miniMenu'>
+            <div className="miniMenu">
               <div className="inline">
-                <button>Scale</button>
-                <button>Chord</button>
-                <button>Progression</button>
+                <button onClick={this.HandleScale}>Scale</button>
+                <button onClick={this.HandleChord}>Chord</button>
+                <button onClick={this.HandleProgression}>Progression</button>
               </div>
             </div>
           </div>

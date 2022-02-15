@@ -2,9 +2,10 @@
     padding:0;
     margin:0px;
 }
-
+*{
+    box-sizing: border-box;
+}
 html, body{
-    box-sizing: content-box;
     margin:0;
     padding:0;
 }
